@@ -14,7 +14,7 @@ module.exports = function(server) {
       x: 0,
       y: 0,
       size: 20,
-      speed: 5,
+      speed: 3,
       c: "#"+((1<<24)*Math.random()|0).toString(16)
     };
 

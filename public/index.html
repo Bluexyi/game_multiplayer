@@ -5,15 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Node Game</title>
     <style>
-        canvas { margin: auto; display: block; border: 1px solid grey; }
-    </style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+    
+        html,
+        body {
+          background-color: #c6c6c6;
+          height: 100%;
+          position: relative;
+          width: 100%;
+        }
+    
+        canvas {
+          height: 100%;
+          position: fixed;
+          width: 100%;
+        }
+      </style>
 </head>
 
 <body>
     <!-- Game -->
-    <canvas id="canvas"
-            width="640"
-            height="480">
+    <canvas id="canvas">
     </canvas>
 
     <script src="/socket.io/socket.io.js"></script>
