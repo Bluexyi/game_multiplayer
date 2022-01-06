@@ -133,12 +133,13 @@ canvas {
 
 
 @media screen and (orientation : portrait) {	
+    body {
+        justify-content: flex-start;
+    }
+
     canvas {
         height: 60vh;
         width: fit-content;
-    }
-
-    canvas{
         margin: 5px;
     }
 
@@ -147,9 +148,9 @@ canvas {
     }
 
     .btn_arrow{
-        width: 25px;
-        height: 25px;
-        margin: 5px;
+        width: 35px;
+        height: 35px;
+        margin: 10px;
     }
 
     .btn_arrow img{
