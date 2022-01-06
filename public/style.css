@@ -73,6 +73,36 @@ canvas {
     padding-bottom: 30px;
 }
 
+
+#btn_left{
+    background: url('./images/arrow_left.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#btn_up{
+    background: url('./images/arrow_up.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#btn_down{
+    background: url('./images/arrow_down.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#btn_right{
+    background: url('./images/arrow_right.png');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 .btn_arrow{
     width: 50px;
     height: 50px;
@@ -82,7 +112,7 @@ canvas {
     justify-content: center;
     align-items: center;
 
-    background: #dde1e7;
+    
     border-radius: 5px;
     box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, .288);
 }
