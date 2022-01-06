@@ -25,11 +25,18 @@ h1{
     font-size: 5vh;
     text-shadow: 4px 4px 0px white;
     mix-blend-mode: screen;
-    animation: fadeIn 2.5s linear forwards;
+    -webkit-animation: fadeIn 2s linear forwards;
+    animation: fadeIn 2s linear forwards;
 }
   
-p{
-    font-family: 'Poppins';
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
@@ -40,6 +47,10 @@ p{
     100% {
         opacity: 1;
     }
+}
+
+p{
+    font-family: 'Poppins';
 }
 
 .center{
