@@ -47,7 +47,7 @@ Viewport.prototype = {
   scrollTo: function (x, y) {
     // Rigid scrolling
     this.x = x - this.w * 0.5;
-    this.y = y - this.w * 0.5;
+    this.y = y - this.h * 0.5;
     // Smooth scrolling (forgot to put this in the video)
     //this.x += (x - this.x - this.w * 0.5) * 0.05;
     //this.y += (y - this.y - this.h * 0.5) * 0.05;
@@ -55,12 +55,11 @@ Viewport.prototype = {
 };
 
 
-let viewport = new Viewport(200, 200, 500, 500);
-let player = new Player(32, 32);
-
-
 let height = document.documentElement.clientHeight;
 let width = document.documentElement.clientWidth;
+
+let viewport = new Viewport(0, 0, width, height);
+let player = new Player(32, 32);
 
 let columns = 24;
 let rows = 44;
@@ -188,7 +187,7 @@ function update(time) {
 
   movePlayer();
   drawMap();
-  drawBorderCanvas()
+  //drawBorderCanvas()
   drawPlayers();
 }
 
@@ -207,30 +206,60 @@ window.onkeyup = function (e) {
   delete keyboard[e.key];
 };
 
+var btnLeft = document.getElementById('btn_left');
+var btnUp = document.getElementById('btn_up');
+var btnDown = document.getElementById('btn_down');
+var btnRight = document.getElementById('btn_right');
+
+var isMoveLeft = false;
+var isMoveUp = false;
+var isMoveDown = false;
+var isMoveRight = false;
+
+btnLeft.onmouseup = function (){ isMoveLeft = false;}
+btnLeft.onmousedown = function () {isMoveLeft = true;}
+btnLeft.ontouchend = function (){ isMoveLeft = false;}
+btnLeft.ontouchstart = function () {isMoveLeft = true;}
+
+btnUp.onmouseup = function (){ isMoveUp = false;}
+btnUp.onmousedown = function () {isMoveUp = true;}
+btnUp.ontouchend = function (){ isMoveUp = false;}
+btnUp.ontouchstart = function () {isMoveUp = true;}
+
+btnDown.onmouseup = function (){ isMoveDown = false;}
+btnDown.onmousedown = function () {isMoveDown = true;}
+btnDown.ontouchend = function (){ isMoveDown = false;}
+btnDown.ontouchstart = function () {isMoveDown = true;}
+
+btnRight.onmouseup = function (){ isMoveRight = false;}
+btnRight.onmousedown = function () {isMoveRight = true;}
+btnRight.ontouchend = function (){ isMoveRight = false;}
+btnRight.ontouchstart = function () {isMoveRight = true;}
+
 //Function move Player
 function movePlayer() {
-  if (keyboard['ArrowLeft'] || keyboard['q']) {
+  if (keyboard['ArrowLeft'] || keyboard['q'] || isMoveLeft) {
     if(canMove('left')){
       player.x -= player.speed; // left
       socket.emit('move left');
     }
   }
-  if (keyboard['ArrowUp'] || keyboard['z']) {
+  if (keyboard['ArrowUp'] || keyboard['z'] || isMoveUp) {
     if(canMove('up')){
       player.y -= player.speed; // up
       socket.emit('move up');
     }
   }
-  if (keyboard['ArrowRight'] || keyboard['d']) {
-    if(canMove('right')){
-      player.x += player.speed; // right
-      socket.emit('move right');
-    }
-  }
-  if (keyboard['ArrowDown'] || keyboard['s']) {
+  if (keyboard['ArrowDown'] || keyboard['s'] || isMoveDown) {
     if(canMove('down')){
       player.y += player.speed; // down
       socket.emit('move down');
+    }
+  }
+  if (keyboard['ArrowRight'] || keyboard['d'] || isMoveRight) {
+    if(canMove('right')){
+      player.x += player.speed; // right
+      socket.emit('move right');
     }
   }
 }
